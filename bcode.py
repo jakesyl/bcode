@@ -124,6 +124,11 @@ def _decode_dict(input):
 # -------------
 
 def bencode(input):
+    '''Encode python types to bencode format.
+    
+    Keyword arguments:
+    input -- the input value to be encoded
+    '''
     if type(input) == type(str()):
         return _encode_string(input)
     elif type(input) == type(int()):
@@ -137,6 +142,11 @@ def bencode(input):
 
 
 def bdecode(input):
+    '''Decode strings from bencode format to python value types.
+    
+    Keyword arguments:
+    input -- the input string to be decoded
+    '''
     if input[cursor] == 'i':
         return _decode_integer(input)[0]
     
