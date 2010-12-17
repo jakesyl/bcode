@@ -147,16 +147,16 @@ def bdecode(input):
     Keyword arguments:
     input -- the input string to be decoded
     '''
-    if input[cursor] == 'i':
+    if input[0] == 'i':
         return _decode_integer(input)[0]
     
-    elif input[cursor].isdigit():
+    elif input[0].isdigit():
         return _decode_string(input)[0]
     
-    elif input[cursor] == 'l':
+    elif input[0] == 'l':
         return _decode_list(input)[0]
 
-    elif input[cursor] == 'd':
+    elif input[0] == 'd':
         return _decode_dict(input)[0]
     else:
         return None # FIXME input is not understood or empty
