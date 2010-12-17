@@ -3,7 +3,7 @@ About
 
 bcode is a pair of functions that provide bencoding and bdecoding functionalities.
 
-bencode is the format used for .torrent BitTorrent files [1]
+bencode is the format used for .torrent BitTorrent files [1]_
 
 Installation
 ------------
