@@ -1,5 +1,6 @@
 import unittest
 from bcode import *
+
 # --------------
 #    TESTING
 # --------------
