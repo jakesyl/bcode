@@ -10,7 +10,7 @@ Installation
 
 bcode is available through PyPI: 
 
-easy_install bcode
+    easy_install bcode
 
 but if you prefer to do it manually you can download and unpack from:
 
