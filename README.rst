@@ -3,16 +3,23 @@ About
 
 bcode is a pair of functions that provide bencoding and bdecoding functionalities.
 
-bencode is the format used for .torrent BitTorrent files [1]_
+bencode is the format used to store data in .torrent BitTorrent files [1]_
 
 Installation
 ------------
 
-cd into the desired lib directory and type
+bcode is available through PyPI: 
 
-    wget https://github.com/medecau/bcode/raw/master/bcode.py
+easy_install bcode
 
-or manually download it to the desired destination
+but if you prefer to do it manually you can download and unpack from:
+
+    https://github.com/medecau/bcode/tarball/master
+
+cd into the unpacked directory and:
+
+    python setup.py install
+
 
 Basic Usage
 -----------
@@ -25,7 +32,7 @@ or if you only need to read or write
 
     from bcode import bencode
 
-then you can
+then you can pass it strings, integers, lists and dictionaries
 
     bencode('string')
 
@@ -35,7 +42,7 @@ then you can
 
     bencode({'name': 'jimmy', 'age': 45})
 
-or
+or encoded strings
 
     bdecode('3:car')
 
@@ -46,6 +53,19 @@ or
     bdecode('d5:color3:red4:kind3:hote')
 
 or look at test.py to have an idea of what these functions can do.
+
+Notes
+_____
+
+When encoding:
+Lists and dictionaries can contain strings, integers, lists and dictionaries has values.
+Dictionary keys must be strings.
+
+When decoding
+Fields always start with an 'i', an 'l', a 'd' or a decimal number.
+Integers, lists and dictionaries end with an 'e', the starting decimal number in strings defines their length.
+
+Learn more about bencode and bittorrent at: http://wiki.theory.org/BitTorrentSpecification#bencoding
 
 LICENSE
 -------
