@@ -1,2 +1,7 @@
+#OSX
 .DS_Store
+#Python
 *.pyc
+build
+dist
+MANIFEST
