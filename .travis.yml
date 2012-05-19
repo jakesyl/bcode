@@ -4,9 +4,7 @@ python:
   - "2.6"
   - "2.7"
   - "3.2"
-  - "pypy"
-script:
-    "test.py"
+script: python test.py
 notifications:
   irc:
     - "irc.freenode.org#hv"
