@@ -3,8 +3,11 @@ python:
   - "2.5"
   - "2.6"
   - "2.7"
-  - "3.2"
 script: python test.py
 notifications:
   irc:
     - "irc.freenode.org#hv"
+  on_success: change
+  on_failure: always
+  template:
+      - "[%{build_number}] %{message} (%{build_url})"
