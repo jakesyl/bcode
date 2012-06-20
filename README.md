@@ -2,10 +2,12 @@
 
     pip install bcode
 
+
 # Use:
 
-    from bcode import decode
+    from bcode import bdecode
     print bdecode(open('foo.torrent').read())
+
 
 # Documentation:
 
@@ -27,6 +29,7 @@ input -- the input string to be decoded
 
 
 Learn more about bencode and bittorrent at: http://wiki.theory.org/BitTorrentSpecification#bencoding
+
 
 ## Bugs & Co.
 
