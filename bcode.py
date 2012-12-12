@@ -5,7 +5,7 @@
 # ---------------
 
 def _encode_dictionary(input):
-    result = ''
+    result = str()
     for key, value in input.iteritems():
         result += bencode(key)+bencode(value)
     return 'd%se' % result
@@ -14,7 +14,7 @@ def _encode_integer(input):
     return 'i%de' % input
 
 def _encode_iterable(input):
-    result = ''
+    result = str()
     for each in input:
         result += bencode(each)
     return 'l%se' % result
@@ -28,7 +28,7 @@ def _encode_string(input):
 # ---------------
 
 def _decode_dict(input):
-    result = {}
+    result = dict()
     remainder = input[1:]
     while remainder[0] != 'e':
         r = _decode_string(remainder)
@@ -73,7 +73,7 @@ def _decode_integer(input):
         raise ValueError("Missing ending delimiter 'e'")
 
 def _decode_list(input):
-    result = []
+    result = list()
     remainder = input[1:]
     while True:
         if remainder[0] == 'i':
@@ -124,7 +124,7 @@ def bencode(input):
     input -- the input value to be encoded
     '''
     
-    itype=type(input)
+    itype = type(input)
     
     if itype == type(str()) or itype == type(unicode()):
         return _encode_string(input.encode('utf8'))
