@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from warnings import warn
+
 # ---------------
 #    ENCODING
 # ---------------
@@ -20,6 +22,8 @@ def _encode_iterable(input):
     return 'l%se' % result
 
 def _encode_string(input):
+    if type(input) is unicode:
+        input = input.encode('utf8')
     return '%d:%s' % (len(input),input)
 
 
@@ -109,6 +113,9 @@ def _decode_string(input):
     start = input.find(':')+1
     size = int(input[:start-1])
     end = start+size
+    if end-start > len(input[start:]):
+        print len(input[start:])
+        warn("String is smaller than %d" % size, stacklevel=2)
     return (input[start:end], input[end:])
 
 
