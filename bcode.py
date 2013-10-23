@@ -185,6 +185,5 @@ def _decode_string(input):
     size = int(input[:start-1])
     end = start+size
     if end-start > len(input[start:]):
-        print len(input[start:])
-        warn("String is smaller than %d" % size, stacklevel=2)
+        raise ValueError("String is smaller than %d" % size)
     return (input[start:end], input[end:])
