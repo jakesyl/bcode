@@ -76,10 +76,10 @@ class TestDecoding(unittest.TestCase):
         self.assertEqual(bdecode('13:spam and eggs'), 'spam and eggs')
 
     def test_decode_single_unicode_string(self):
-        self.assertEqual('p\xe3o', bdecode('6:p\xe3o'))
+        self.assertEqual(u'pão'.encode('utf-8'), bdecode('4:p\xc3\xa3o'))
 
     def test_decode_short_string(self):
-        self.assertEqual('egg', bdecode('4:egg'))
+        self.assertEqual(' egg', bdecode('4: egg'))
 
     # LISTS
     def test_decode_single_list(self):
