@@ -6,7 +6,7 @@ from warnings import warn
 #    PUBLIC
 # -------------
 
-def bencode(input):
+def bencode(input=None):
     """
     Encode python types to bencode format.
 
@@ -14,7 +14,11 @@ def bencode(input):
     input -- the input value to be encoded
     """
 
-    itype = type(input)
+    if input == None:
+        return None
+
+    else:
+        itype = type(input)
 
     if itype == type(str()) or itype == type(unicode()):
         return _encode_string(input.encode('utf8'))
@@ -35,7 +39,7 @@ def bencode(input):
             raise ValueError('Invalid field type: %r' % itype)
 
 
-def bdecode(input):
+def bdecode(input=None):
     """
     Decode strings from bencode format to python value types.
 
@@ -43,7 +47,11 @@ def bdecode(input):
     input -- the input string to be decoded
     """
 
-    input = input.strip()
+    if input == None:
+        return None
+
+    else:
+        input = input.strip()
 
     if input[0] == 'i':
         return _decode_integer(input)[0]
