@@ -1,7 +1,66 @@
 # -*- coding: utf-8 -*-
-
 from warnings import warn
 
+
+# -------------
+#    PUBLIC
+# -------------
+
+def bencode(input):
+    '''Encode python types to bencode format.
+
+    Keyword arguments:
+    input -- the input value to be encoded
+    '''
+
+    itype = type(input)
+
+    if itype == type(str()) or itype == type(unicode()):
+        return _encode_string(input.encode('utf8'))
+
+    elif itype == type(float()):
+        return _encode_string(str(input))
+
+    elif itype == type(int()):
+        return _encode_integer(input)
+
+    elif itype == type(dict()):
+        return _encode_dictionary(input)
+
+    else:
+        try:
+            return _encode_iterable(iter(input))
+        except TypeError:
+            raise ValueError('Invalid field type: %r' % itype)
+
+
+def bdecode(input):
+    '''Decode strings from bencode format to python value types.
+
+    Keyword arguments:
+    input -- the input string to be decoded
+    '''
+
+    input = input.strip()
+
+    if input[0] == 'i':
+        return _decode_integer(input)[0]
+
+    elif input[0].isdigit():
+        return _decode_string(input)[0]
+
+    elif input[0] == 'l':
+        return _decode_list(input)[0]
+
+    elif input[0] == 'd':
+        return _decode_dict(input)[0]
+    else:
+        raise ValueError("Invalid initial delimiter '%s'" % input[0])
+
+
+# ---------------
+#    INTERNAL
+# ---------------
 
 ERROR_INIT_DELIMITER = "Invalid delimiter '%r' while decoding"
 
@@ -127,59 +186,3 @@ def _decode_string(input):
         print len(input[start:])
         warn("String is smaller than %d" % size, stacklevel=2)
     return (input[start:end], input[end:])
-
-
-# -------------
-#    PUBLIC
-# -------------
-
-def bencode(input):
-    '''Encode python types to bencode format.
-
-    Keyword arguments:
-    input -- the input value to be encoded
-    '''
-
-    itype = type(input)
-
-    if itype == type(str()) or itype == type(unicode()):
-        return _encode_string(input.encode('utf8'))
-
-    elif itype == type(float()):
-        return _encode_string(str(input))
-
-    elif itype == type(int()):
-        return _encode_integer(input)
-
-    elif itype == type(dict()):
-        return _encode_dictionary(input)
-
-    else:
-        try:
-            return _encode_iterable(iter(input))
-        except TypeError:
-            raise ValueError('Invalid field type: %r' % itype)
-
-
-def bdecode(input):
-    '''Decode strings from bencode format to python value types.
-
-    Keyword arguments:
-    input -- the input string to be decoded
-    '''
-
-    input = input.strip()
-
-    if input[0] == 'i':
-        return _decode_integer(input)[0]
-
-    elif input[0].isdigit():
-        return _decode_string(input)[0]
-
-    elif input[0] == 'l':
-        return _decode_list(input)[0]
-
-    elif input[0] == 'd':
-        return _decode_dict(input)[0]
-    else:
-        raise ValueError("Invalid initial delimiter '%s'" % input[0])
