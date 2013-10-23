@@ -17,12 +17,14 @@ import sys
 
 import bcode
 
+
 class MockPyBencoder(object):
     def encode(self, arg=None):
         return bcode.bencode(arg)
 
     def decode(self, arg=None):
         return bcode.bdecode(arg)
+
 
 class PyBencoderTests(unittest.TestCase):
     ''' A test class for PyBencoder class '''
@@ -85,7 +87,6 @@ if __name__ == '__main__':
 
     #suite = unittest.TestSuite()
     #suite.addTest(BenIntTest("testEncodeNoInputData"))
-
 
     suite = unittest.TestLoader().loadTestsFromTestCase(PyBencoderTests)
     unittest.TextTestRunner(verbosity=3).run(suite)

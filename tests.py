@@ -98,14 +98,15 @@ class TestDecoding(unittest.TestCase):
                          {'cow': 'moo', 'spam': 'eggs'})
 
     def test_decode_list_in_dict(self):
-        self.assertEqual(bdecode('d4:spaml1:a1:bee'), {'spam': ['a', 'b']} )
+        self.assertEqual(bdecode('d4:spaml1:a1:bee'), {'spam': ['a', 'b']})
 
     def test_decode_dict_in_dict(self):
         self.assertEqual(bdecode('d4:spamd1:a1:bee'), {'spam': {'a': 'b'}})
 
     # MULTIPLE TYPES
     def test_decode_complex_1(self):
-        self.assertEqual(bdecode('d4:teamld4:name3:bob3:agei30e6:skillsl6:python4:htmleed4:name5:jimmy3:agei32e6:skillsleeee'), {'team': [{'skills': ['python', 'html'], 'age': 30, 'name': 'bob'}, {'skills': [], 'age': 32, 'name': 'jimmy'}]})
+        self.assertEqual(bdecode('d4:teamld4:name3:bob3:agei30e6:skillsl6:python4:htmleed4:name5:jimmy3:agei32e6:skillsleeee'),
+                         {'team': [{'skills': ['python', 'html'], 'age': 30, 'name': 'bob'}, {'skills': [], 'age': 32, 'name': 'jimmy'}]})
 
 if __name__ == '__main__':
     unittest.main()
