@@ -18,10 +18,10 @@ import sys
 import bcode
 
 class MockPyBencoder(object):
-    def encode(self, arg):
+    def encode(self, arg=None):
         return bcode.bencode(arg)
 
-    def decode(self, arg):
+    def decode(self, arg=None):
         return bcode.bdecode(arg)
 
 class PyBencoderTests(unittest.TestCase):
