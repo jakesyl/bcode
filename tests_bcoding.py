@@ -1,6 +1,8 @@
 from bcode import bencode, bdecode as main
 from pytest import main, raises
 
+# https://github.com/flying-sheep/bcode
+
 #basic en/decoding
 
 def test_stream_decoding():
