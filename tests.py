@@ -159,14 +159,14 @@ class PyBencoderTests(unittest.TestCase):
 
     def testDecodeIntegerInvalidInput(self):
         #self.assertEqual(self.bencoder.decode('i12asd3e'), None)
-        self.assertRaises(ValueError)
+        self.assertRaises(ValueError, self.bencoder.decode, 'i12asd3e')
 
     def testDecodeStringValidInput(self):
         self.assertEqual(self.bencoder.decode('3:red'), 'red')
 
     def testDecodeStringInvalidInput(self):
         #self.assertEqual(self.bencoder.decode('3:re'), None)
-        self.assertRaises(ValueError)
+        self.assertRaises(ValueError, self.bencoder.decode, '3:re')
 
     def testEncodeEmptyList(self):
         self.assertEqual(self.bencoder.encode([]), "le")
