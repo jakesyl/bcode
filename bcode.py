@@ -7,11 +7,12 @@ from warnings import warn
 # -------------
 
 def bencode(input):
-    '''Encode python types to bencode format.
+    """
+    Encode python types to bencode format.
 
     Keyword arguments:
     input -- the input value to be encoded
-    '''
+    """
 
     itype = type(input)
 
@@ -35,11 +36,12 @@ def bencode(input):
 
 
 def bdecode(input):
-    '''Decode strings from bencode format to python value types.
+    """
+    Decode strings from bencode format to python value types.
 
     Keyword arguments:
     input -- the input string to be decoded
-    '''
+    """
 
     input = input.strip()
 
