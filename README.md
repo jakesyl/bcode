@@ -14,18 +14,11 @@
 ## bencode(input)
 
 Encode python types to bencode format.
-    
-Keyword arguments:
-
-input - the input value to be encoded
 
 
-## bdecode
+## bdecode(input)
 
 Decode strings from bencode format to python value types.
-    
-Keyword arguments:
-input -- the input string to be decoded
 
 
 Learn more about bencode and bittorrent at: http://wiki.theory.org/BitTorrentSpecification#bencoding
