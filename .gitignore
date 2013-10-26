@@ -2,7 +2,8 @@
 .DS_Store
 
 #Python
-*.pyc
+*.py[oc]
+.tox/*
 build
 dist
 env
