@@ -80,7 +80,7 @@ ERROR_INIT_DELIMITER = "Invalid delimiter '%r' while decoding"
 
 def _encode_dictionary(input):
     result = str()
-    for key, value in input.iteritems():
+    for key, value in sorted(input.items(), key=lambda x: x[0]):
         result += bencode(key)+bencode(value)
     return 'd%se' % result
 

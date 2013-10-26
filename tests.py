@@ -58,7 +58,7 @@ class TestEncoding(unittest.TestCase):
     def test_encode_dict_in_dict(self):
         self.assertEqual(bcode.bencode({'fruit': {'a': 'apple', 'b': 'banana'},
                                   'cow': 'moo'}),
-                         'd5:fruitd1:a5:apple1:b6:bananae3:cow3:mooe')
+                         'd3:cow3:moo5:fruitd1:a5:apple1:b6:bananaee')
 
 
 class TestDecoding(unittest.TestCase):
