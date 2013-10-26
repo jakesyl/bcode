@@ -46,10 +46,11 @@ class TestEncoding(unittest.TestCase):
     def test_encode_dict_two_members(self):
         self.assertEqual(bcode.bencode({'cow': 'moo', 'spam': 'eggs'}),
                          'd3:cow3:moo4:spam4:eggse')
-    
+
     def test_encode_dict_key_order(self):
         """keys have to be sorted"""
         self.assertEqual(bcode.bencode({'a': 0, 'b': 1}), 'd1:ai0e1:bi1ee')
+        self.assertEqual(bcode.bencode({'a': 0, 'b': 1, 'c': 2}), 'd1:ai0e1:bi1e1:ci2ee')
 
     def test_encode_list_in_dict(self):
         self.assertEqual(bcode.bencode({'spam': ['a', 'b']}), 'd4:spaml1:a1:bee')
