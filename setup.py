@@ -7,5 +7,5 @@ setup(name='bcode',
       author="Pedro Rodrigues",
       author_email="medecau@gmail.com",
       license='MIT',
-      url="http://medecau.github.com/bcode/",
+      url="http://medecau.github.io/bcode",
       )
